@@ -14,7 +14,8 @@ public class Job {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	long jobId;
 	String jobRole; 
-	@Column(name="job_description", length=5000)
+	@jakarta.persistence.Lob
+	@jakarta.persistence.Column(columnDefinition = "MEDIUMTEXT")
 	String jobDescription; 
 	String jobURL; 
 	long salary;
@@ -22,12 +23,14 @@ public class Job {
 	String location;
 	String jobType; //full-time or part-time
 	String postedDate;
+	String source;
+	String externalId;
 	public Job() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	public Job(long jobId, String jobRole, String jobDescription, String jobURL, long salary, String companyName,
-			String location, String jobType, String postedDate) {
+			String location, String jobType, String postedDate, String source, String externalId) {
 		super();
 		this.jobId = jobId;
 		this.jobRole = jobRole;
@@ -38,6 +41,20 @@ public class Job {
 		this.location = location;
 		this.jobType = jobType;
 		this.postedDate = postedDate;
+		this.source=source;
+		this.externalId=externalId;
+	}
+	public String getSource() {
+		return source;
+	}
+	public void setSource(String source) {
+		this.source = source;
+	}
+	public String getExternalId() {
+		return externalId;
+	}
+	public void setExternalId(String externalId) {
+		this.externalId = externalId;
 	}
 	public long getJobId() {
 		return jobId;
